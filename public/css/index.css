@@ -1,7 +1,62 @@
-html {
-  max-width: 720px;
+* {
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  font-style: oblique;
 }
+.card {
+  /* border: none; */
+  color: red;
+}
+.card > p {
+  color: green;
+  -webkit-text-fill-color: red;
+  /* -webkit-text-stroke: 1px blue; */
+}
+p:focus,
+p:active,
+p:hover {
+  -webkit-text-fill-color: rgb(254, 246, 8);
+  -webkit-text-stroke: 2px rgb(68, 92, 228);
 
-body {
-  background: #fff;
+  direction: ltr;
+}
+#test {
+  /* color: unset;
+  -webkit-text-fill-color: unset;
+  -webkit-text-stroke: 10px unset; */
+
+  /* writing-mode: vertical-rl; */
+  text-align: justify;
+  letter-spacing: 0.02em;
+}
+span {
+  text-align: right;
+  text-transform: uppercase;
+  text-decoration: underline dotted red;
+  font-size: xx-small;
+}
+.span-b {
+  text-decoration-color: blue;
+  font-size: xx-small;
+}
+h1 {
+  color: rgb(8, 39, 39);
+  background-color: blueviolet;
+  font-weight: 900;
+  font-style: italic;
+}
+pre {
+  tab-size: 5;
+}
+.test {
+  display: none;
+}
+.block {
+  display: inline-block;
+  background: rgb(208, 208, 208);
+  margin: auto;
+  max-width: min-content;
+  min-height: 100px;
+  max-height: max-content;
 }
