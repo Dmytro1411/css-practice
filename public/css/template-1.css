@@ -35,7 +35,8 @@
 }
 .nav_link:hover {
   text-decoration: underline;
-  color: blue;
+  /* color: blue; */
+  opacity: 50%;
 }
 
 .nav_vertical > .nav_link {
@@ -75,25 +76,7 @@
   display: block;
   margin-bottom: 12px;
 }
-.hero_title {
-  font-size: 56px;
-  color: #212529;
-  font-weight: 500;
-  margin-bottom: 12px;
-  text-align: center;
-  /* line-height: 100%; Указываем высоту ряда*/
-}
 
-.hero_text {
-  font-size: 20px;
-  color: #212529;
-  font-weight: 500;
-  max-width: 585px;
-  text-align: center;
-  font-weight: 400;
-  margin: 0 auto;
-  line-height: 2;
-}
 .plans_card:not(:last-of-type) {
   margin-right: 24px;
 }
@@ -118,14 +101,26 @@
 }
 .card_block {
   text-align: center;
+  /* list-style-type: upper-alpha; */
+  list-style-position: inside;
+  list-style-image: linear-gradient(
+    to bottom right,
+    blue,
+    red
+  );
+  padding: 0;
 }
 .card_block:not(:last-of-type) {
   margin-bottom: 24px;
 }
+
 .card_description_item {
   font-size: 16px;
   color: #212529;
   display: block;
+  /* Код выше блокирует вывод разметки таблицы, для аннулирования данного 
+  пункта можно прописать ниже следующую конструкцию */
+  display: list-item;
 }
 .card_description_item:not(:last-of-type) {
   margin-bottom: 12px;
@@ -147,10 +142,12 @@
 }
 
 .card:hover {
-  outline: 2px solid blue;
-  outline-offset: 5px;
+  /* outline: 2px solid blue; */
+  /* outline-offset: 5px; */
   box-shadow: 5px 5px 10px rgba(116, 169, 255, 0.254);
-  cursor: pointer;
+  cursor: not-allowed;
+
+  opacity: 0.5;
 }
 h1 {
   text-shadow: 0px 0px 30px rgba(255, 0, 0);
@@ -168,18 +165,41 @@ h1 {
   /* display: none; */
   visibility: hidden;
 }
+
+.hero_text {
+  font-size: 20px;
+  color: #212529;
+  font-weight: 500;
+  max-width: 585px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 2;
+}
 .hero_text {
   background: grey;
-  /* max-width: 250px; */
-  width: 200px;
+  width: 400px;
   hyphens: manual;
   overflow: auto;
   resize: both;
   word-spacing: 4px;
 }
+.hero_text {
+  /* border: 20px solid transparent; */
+  padding: 40px;
+  color: green;
+  border-image-source: url('/img/test2.jpg');
+  border-image-width: 10% 10%;
+  border-image-slice: 10% 10%;
+  /* border-image-repeat: space; */
+  /* border-image-outset: 40px; */
+}
 
-.overflow {
-  overflow-wrap: anywhere;
+.hero_title {
+  font-size: 56px;
+  color: #212529;
+  font-weight: 500;
+  text-align: center;
+  /* line-height: 100%; Указываем высоту ряда*/
 }
 
 .hero_title {
@@ -190,4 +210,73 @@ h1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+/* body {
+  background-image: url('/img/test2.jpg');
+  background-repeat: round;
+} */
+/* .page {
+  background-image: url('/img/test2.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+} */
+
+.overflow {
+  overflow-wrap: anywhere;
+}
+
+/* .table tr {
+  border: 1px solid#343a40;
+} */
+.table tr td {
+  border: 1px solid #4f6983;
+  border-bottom-color: red;
+  border-right-color: blue;
+}
+
+.table {
+  table-layout: fixed;
+  width: 600px;
+
+  border-collapse: unset;
+
+  border-spacing: 20px 10px;
+
+  caption-side: top;
+
+  empty-cells: hide;
+}
+/* .nav_link::before {
+  content: open-quote;
+}
+
+.nav_link::after {
+  content: close-quote;
+} */
+
+.nav_link::before,
+.nav_link::after {
+  /* content: url('/img/test2.jpg'); */
+
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+
+  background-image: url('/img/test2.jpg');
+}
+.nav_link::before {
+  margin-right: 15px;
+}
+.nav_link::after {
+  margin-left: 15px;
+}
+
+.calc {
+  width: 600px;
+
+  margin: 0;
+
+  margin-left: calc(50% - (600px / 2));
 }
