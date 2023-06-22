@@ -1,0 +1,262 @@
+:root {
+  /* Данные переменные выносятся если их количество в коде более трех
+	для упрощения последующего внесения изменений в них
+	(не нужно выискивать в коде их местоположение) */
+  --space-m: 12px;
+  --space-xm: 16px;
+  --space-l: 24px;
+  --space-b: 36px;
+
+  --size-s: 14px;
+  --size-d: 16px;
+  --size-l: 20px;
+
+  --color-border: #dee2e6;
+  --color-primary: rgb(46, 46, 255);
+  --color-white: #fff;
+  --color-title: #212529;
+  --color-text: #343a34;
+
+  --border-radius: 12px;
+  /* Жирность шрифта */
+  --weight-title: 500;
+  --weight-text: 400;
+}
+
+/* ================================== */
+
+.page {
+  background: var(--color-white);
+  padding: 0 15px;
+
+  display: flex;
+  /* Что бы контент отображался по центру */
+  justify-content: center;
+}
+.page_content {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* Задаем отступ между элементами */
+  gap: 80px;
+}
+
+/* ================================== */
+
+.header {
+  padding: var(--space-l);
+  border-bottom: 1px solid var(--color-border);
+
+  display: flex;
+  justify-content: space-between;
+}
+.footer {
+  padding: var(--space-l);
+  border-top: 1px solid var(--color-border);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 17px;
+  color: var(--color-white);
+
+  background: var(--color-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: calc(var(--border-radius) / 2);
+  display: flex;
+  /* выравнивание по горизонтали */
+  justify-content: center;
+  /* выравнивание по вертикали */
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav_inline {
+  /* Создаем отступы по горизонтале между ссылками */
+  gap: var(--space-l);
+}
+
+.nav_vertical {
+  /* Создаем отступы по вертикали между ссылками */
+  gap: var(--space-xm);
+  /* Указываем что при nav_vertical наши ссылки 
+	указывались вертикально */
+  flex-direction: column;
+}
+
+.nav_link {
+  color: var(--color-text);
+  font-size: var(--size-d);
+  text-decoration: none;
+  /* Задаем расстояние между строками */
+  line-height: 100%;
+}
+.nav_link:hover {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+.footer {
+  padding: var(--space-l);
+  border-top: 1px solid var(--color-border);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_copyright {
+  font-size: var(--size-s);
+  color: #6c757d;
+
+  display: block;
+  margin-top: var(--space-l);
+}
+
+.footer_title {
+  font-size: var(--size-l);
+  color: var(--color-title);
+  display: block;
+  margin-bottom: var(--space-l);
+  font-weight: var(--weight-title);
+}
+/* После вываода данных блока, дальнейшие действия начинаем с
+позиционирования */
+
+.hero {
+  /* Действие №1 - Данная команда преобразует данные с классом .hero
+ в столбики */
+  display: flex;
+  /* Действие №5 - Отцентровываем текст */
+  align-items: center;
+
+  /* Действие №3 - указываем отступ между элементами блока */
+  gap: var(--space-b);
+
+  padding: var(--space-b);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero_image {
+  /* Действие №2 - Указываем размер того элемента, которого мы
+	знаем*/
+  width: 500px;
+  height: 500px;
+
+  /* Действие №4 - указываем радиус закругления углов картинки */
+  border-radius: var(--border-radius);
+}
+/* Действие №6 - Задаем стилизацию для .hero_content */
+.hero_content {
+  /* Действие №6.1 - title и text преобразуются в колонки */
+  display: flex;
+  /* Действие №6.2 - title и text обратно преобразовываем в ряды */
+  flex-direction: column;
+  /* Действие №6.3 - Задаем отступы между рядами */
+  gap: var(--space-l);
+}
+
+.hero_title {
+  font-size: 50px;
+  color: var(--color-title);
+  font-weight: var(--weight-title);
+  line-height: 120%;
+}
+
+.hero_text {
+  font-size: var(--size-l);
+  color: var(--color-text);
+  font-weight: var(--weight-text);
+  line-height: 170%;
+}
+
+.blog {
+  display: flex;
+  gap: var(--space-b);
+
+  padding: var(--space-b);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-l);
+}
+
+.card_image {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+}
+
+.card_title {
+  font-size: 32px;
+  font-weight: var(--weight-title);
+  color: var(--color-title);
+}
+
+.card_text {
+  font-weight: var(--weight-text);
+  font-size: var(--size-d);
+  color: var(--color-text);
+}
+
+.button {
+  display: inline-block;
+  font-size: var(--size-d);
+  text-decoration: none;
+  padding: var(--space-m) var(--space-xm);
+  border-radius: var(--border-radius);
+}
+.card_button {
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+.button:hover {
+  opacity: 0.7;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--color-primary);
+  padding: var(--space-l);
+  border-radius: var(--border-radius);
+}
+
+.form_content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.form_title {
+  font-size: 27px;
+  font-weight: var(--weight-title);
+  color: var(--color-white);
+}
+
+.form_text {
+  font-size: var(--size-d);
+  font-weight: var(--weight-text);
+  color: var(--color-white);
+}
+
+.form_button {
+  background-color: var(--color-white);
+  width: 100%;
+  max-width: 160px;
+  color: var(--color-text);
+}
