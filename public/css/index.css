@@ -60,3 +60,35 @@ pre {
   min-height: 100px;
   max-height: max-content;
 }
+
+.header {
+  padding: 10px;
+  border-bottom: 1px solid #949191;
+  display: flex;
+  justify-content: right;
+}
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav_vertical {
+  /* Создаем отступы по вертикали между ссылками */
+  gap: var(--space-xm);
+  /* Указываем что при nav_vertical наши ссылки 
+	  указывались вертикально */
+  flex-direction: column;
+}
+
+.nav_link {
+  color: darkblue;
+  font-size: 14px;
+  text-decoration: none;
+  /* Задаем расстояние между строками */
+  line-height: 100%;
+}
+.nav_link:hover {
+  text-decoration: underline;
+  color: blue;
+  opacity: 30%;
+}
