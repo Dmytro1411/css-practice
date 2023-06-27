@@ -1,3 +1,29 @@
+@keyframes fly {
+  from {
+    top: 0;
+    left: 0;
+    background: white;
+    color: red;
+  }
+  25% {
+    top: 500px;
+    left: 500px;
+    background: blue;
+    width: 100px;
+  }
+  50% {
+    left: 0;
+    background: yellow;
+    width: 0px;
+  }
+  to {
+    top: 0;
+    right: 0;
+    background: purple;
+    /* width: 100px; */
+  }
+}
+
 :root {
   /* Данные переменные выносятся если их количество в коде более трех
 	для упрощения последующего внесения изменений в них
@@ -23,6 +49,8 @@
   /* Жирность шрифта */
   --weight-title: 500;
   --weight-text: 400;
+
+  --page-width: 960px;
 }
 
 /* ================================== */
@@ -36,23 +64,50 @@
   justify-content: center;
 }
 .page_content {
-  max-width: 960px;
+  max-width: var(--page-width);
   width: 100%;
   display: flex;
   flex-direction: column;
 
   /* Задаем отступ между элементами */
   gap: var(--space-sm);
+
+  /* продолжаем писать код для позиционирования header после
+  его закрепления в шапке страницы*/
+  /* padding-top: 74px; */
 }
 
 /* ================================== */
 
 .header {
-  padding: var(--space-l);
+  padding: var(--space-l) 0;
   border-bottom: 1px solid var(--color-border);
 
   display: flex;
   justify-content: space-between;
+
+  /* Закрепляем header (шапку), что бы при прокручивании
+  страницы он постоянно оставался на месте (был видим) */
+  /* position: fixed; */
+  /* Но при указании position: fixed мы header выводим из кода
+  соответствеенно сбивается позиционирование других элементов
+  поэтому что бы вернуть заданное ранее позиционирование мы
+  прописываем следующий код */
+  position: sticky;
+
+  max-width: var(--page-width);
+  width: 100%;
+
+  width: var(--page-width);
+  top: 0;
+  /* Прописываем код, что бы header всегда был по средине */
+  /* left: calc(50% - (var(--page-width) / 2)); */
+
+  /* Дальше для задавания отступов мы переходим в
+  page_content */
+
+  background-color: var(--color-white);
+  z-index: 1;
 }
 .footer {
   padding: var(--space-l);
@@ -100,6 +155,9 @@
   text-decoration: none;
   /* Задаем расстояние между строками */
   line-height: 100%;
+
+  transition-property: color;
+  transition-duration: 1s;
 }
 .nav_link:hover {
   text-decoration: underline;
@@ -219,6 +277,9 @@
   text-decoration: none;
   padding: var(--space-m) var(--space-xm);
   border-radius: var(--border-radius);
+
+  transition-property: opacity, background-color, color;
+  transition-duration: 3s;
 }
 .card_button {
   color: var(--color-white);
@@ -226,6 +287,8 @@
 }
 .button:hover {
   opacity: 0.7;
+  background-color: yellow;
+  color: red;
 }
 
 .form {
@@ -261,4 +324,182 @@
   width: 100%;
   max-width: 160px;
   color: var(--color-text);
+}
+/* .hero_image { */
+/* При значении position: relative объект позиционирутся относительно
+	его начального местоположения*/
+/* position: relative; */
+/* right: 100px;
+  bottom: 100px; */
+
+/* При значении position: absolute объект изымается из текста, 
+	т.е. накладывается как бы сверху текста. 
+	При этом начальным положением данного объекта становится местоположение
+	его родительского тега */
+/* position: absolute; */
+/* В данном случае при применении команд right/left/bottom/top объект будет
+  брать за начальное позиционирование начало страницы или конец родительского тега */
+/* right: 0px; */
+/* top: 0px; */
+/* } */
+
+/* Создание объекта (стрелочек) не зависимых от контекста */
+.hero_slider_icon {
+  background: var(--color-primary);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+
+  /* Для позиционирования данного элемента
+  соответственно объекта, но в то же время
+  при изменении величины родительского тега
+  будет изменятся и их местоположение */
+  position: absolute;
+
+  /* для позиционирования данного элемента
+  соответственно страницы */
+  /* position: fixed; */
+  top: calc(50% - 15px);
+}
+
+.hero_slider_icon:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.hero_slider {
+  position: relative;
+}
+
+.hero_slider_left {
+  left: var(--space-l);
+}
+
+.hero_slider_right {
+  right: var(--space-l);
+}
+
+.modal {
+  /* Элемент разм ещается относительно его родительского
+	тега или окна браузера, но остается в фиксированном месте
+	на экране независимо от прокрутки страницы */
+  position: fixed;
+
+  /* Данное свойство позиционирует элемент с классом modal
+  (Модальным является диалоговое окно/всплывающее окно,
+  которое отображается поверх текущей страницы) относительно
+  его начального положения, но фиксирует при прокручивании*/
+  /* position: sticky; */
+
+  top: 200px;
+  left: 200px;
+
+  /* height: 100px; */
+  width: 600px;
+  background: black;
+  color: var(--color-white);
+
+  padding: 24px;
+  border-radius: 24px;
+  line-height: 150%;
+
+  z-index: 2;
+
+  /* Создаем анимацию */
+  /* transition-property: top;
+  transition-duration: 3s;
+  transition-timing-function: cubic-bezier(
+    0,
+    0.83,
+    0.88,
+    0.15
+  );
+  transition-delay: 3s; */
+}
+
+.modal {
+  /* top: 600px; */
+  animation-name: fly;
+  animation-duration: 4s;
+  animation-timing-function: cubic-bezier(
+    0.92,
+    0,
+    0.91,
+    0.66
+  );
+
+  animation-delay: 3s;
+
+  /* animation-iteration-count: infinite; */
+
+  animation-direction: alternate;
+
+  animation-fill-mode: both;
+}
+
+body:hover .modal {
+  /* animation-play-state: paused; */
+}
+
+.modal_image {
+  height: 600px;
+  width: 700px;
+
+  /* Элемент смещается влево, обтекание происходит справа от
+  элемента */
+  float: left;
+
+  /* Элемент смещается вправо, обтекание происходит слева от
+  элемента */
+  /* float: right; */
+
+  /* Смещение не происходит и элемент остается в потоке документа
+  обтекание происходит со всех сторон */
+  /* float: none; */
+
+  margin: 12px 12px 0px 0px;
+
+  /* Для изменения розмера картинки или видео без
+  нарушения пропорции используется свойство object-fit*/
+  object-fit: scale-down;
+
+  background: lightblue;
+
+  /* Для изменения позиции медиа используется свойство
+  object-position */
+  object-position: top right;
+}
+
+.modal_text {
+  /* Элемент может обтекать */
+  /* clear: none; */
+  /* Элемент не может обтекать по левой стороне */
+  /* clear: left; */
+  /* Элемент не может обтекать по правой стороне */
+  /* clear: right; */
+  /* Элемент не может обтекать с обоих сторон */
+  clear: both;
+}
+
+.hero {
+  /* Для указания как пользователь может выделять текст
+	на странице используется свойство user-select */
+  user-select: none;
+}
+
+.input {
+  /* Для задания цвета курсора редактирования используется
+	свойство caret-color*/
+  caret-color: var(--color-primary);
+  border: 1px solid var(--color-title);
+}
+
+/* Для того чтобы задать поведение прокрутки используют 
+свойство scroll-behavior */
+:root {
+  scroll-behavior: smooth;
 }
