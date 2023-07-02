@@ -441,9 +441,9 @@
   animation-fill-mode: both;
 }
 
-body:hover .modal {
-  /* animation-play-state: paused; */
-}
+/* body:hover .modal {
+  animation-play-state: paused;
+} */
 
 .modal_image {
   height: 600px;

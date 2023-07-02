@@ -24,10 +24,15 @@
   --border-radius-d: 12px;
   --border-radius-s: 4px;
   /* Жирность шрифта */
-  --weight-title: 600;
+  --weight-title: 700;
   --weight-text: 400;
 
   --page-width: 1000px;
+
+  --line-m: 100%;
+  --line-d: 120%;
+
+  --width-m: 100%;
 }
 
 /* ================================== */
@@ -42,7 +47,7 @@
 }
 .page_content {
   max-width: var(--page-width);
-  width: 100%;
+  width: var(--width-m);
   display: flex;
   flex-direction: column;
 
@@ -73,7 +78,7 @@
   position: sticky;
 
   max-width: var(--page-width);
-  width: 100%;
+  width: var(--width-m);
 
   /* Подключение этого свойства данный элемент делает не гибким
   т.е. при изменении размера экрана положение элемента не меняется */
@@ -134,7 +139,7 @@
   font-size: var(--size-d);
   text-decoration: none;
   /* Задаем расстояние между строками */
-  line-height: 100%;
+  line-height: var(--line-m);
 
   transition-property: color;
   transition-duration: 1s;
@@ -170,151 +175,51 @@
 
 .main {
   display: flex;
-  width: 100%;
-  align-items: flex-start;
-
-  /* Устанавливаем расстояние между двумя элементами входящих в этот тег, т.е. между message & form 
-  согласно файлу с Figma (40px)*/
-  gap: 40px;
+  width: var(--width-m);
+  align-items: center;
+  gap: var(--space-l);
+  background: var(--color-white);
 }
 
-.messages {
-  /* Растягиваем пропорции этого элемента по отношению ко второму элементу*/
-  /* flex-grow: 2; */
-  /* Для более точного указания размеров блоков увеличиваем коэффициенты соотношения */
-  /* flex-grow: 20; */
-  /* Другой вариант задания розмеров блока */
-  max-width: 640px;
-  width: 100%;
-
-  background: var(--color-white);
-  border-radius: var(--border-radius-d);
-  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.1);
-  padding: var(--space-l);
+.info {
   display: flex;
   flex-direction: column;
+  max-width: 582px;
+  width: var(--width-m);
   gap: var(--space-l);
 }
 
-.messages_title {
+.info_title {
+  max-width: 582px;
+  width: var(--width-m);
+  font-size: 56px;
+  line-height: var(--line-d);
+  color: var(--color-title);
+  font-weight: 700;
+}
+
+.info_text {
+  max-width: 412px;
+  width: var(--width-m);
   font-size: var(--size-m);
   color: var(--color-title);
   font-weight: var(--weight-text);
-  padding-bottom: var(--space-m);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.messages_link {
-  color: var(--color-primary);
-  text-align: right;
-  font-size: var(--size-s);
-  line-height: 19.2px;
-  text-decoration-line: none;
-  /* Из-за того что (display: flex) вся область с ссылкой стала кликабельной,
-  что бы это отменить нужнов в свойствах той переменной (.messages_link) к которой относится ссылка
-  прописать следующую конструкцию align-self: flex-end*/
-  align-self: flex-end;
-
-  transition-property: opacity, border-bottom;
-  transition-duration: 3s;
-  border-bottom: 1px solid transparent;
-}
-
-.messages_link:hover {
-  opacity: 0.5;
-  border-color: var(--color-primary);
-}
-
-.msg {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m);
-
-  padding-bottom: var(--space-m);
-  border-bottom: 1px solid var(--color-border);
-  /* Задаем свойство для родительского тега, чтобы при указании свойства position для
-элемента данный элемент позиционировался не по экрану а по родительскому тегу */
-  position: relative;
-  padding-right: var(--space-b);
-}
-.msg_name {
-  font-size: var(--size-d);
-  color: var(--color-title);
-  font-weight: var(--weight-title);
-  line-height: var(--size-l);
-  width: 215px;
-}
-
-.msg_text {
-  font-size: var(--size-d);
-  color: var(--color-title);
-  font-weight: var(--weight-text);
-
-  /* justify-content: center; */
-  /* align-self: stretch; */
-  /* line-height: 150%; */
-}
-
-.msg_day {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.advantages {
-  display: flex;
-  gap: var(--space-l);
-}
-
-.advantages > div {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e4eaf2;
-  border-radius: var(--border-radius-d);
-  gap: var(--space-s);
-  padding: var(--space-l);
-  /* Данное свойство прописывается для того чтобы элементы
-растянулись на максимальную величину и стали одного размера */
-  /* width: 100%; */
-  /* Но можно сделать и по другому, через :nth-of-type(2) */
-}
-
-.advantages > div:nth-of-type(2) {
-  flex-grow: 1;
-  width: 100%;
-  color: red;
-}
-
-.advantages > div > strong {
-  color: var(--color-title);
-  font-weight: var(--weight-title);
-  font-size: 18px;
-}
-
-.advantages > div > p {
-  /* color: #767676; */
-  font-size: var(--size-d);
-  line-height: 150%;
+  line-height: var(--space-b);
+  font-style: normal;
 }
 
 .form {
-  /* Растягиваем пропорции первого элемента по отношению к этому элементу*/
-  /* flex-grow: 1; */
-  /* Тоже что и для message */
-  /* flex-grow: 10; */
-  /* Это позволит сделать следующее */
-  /* flex-grow: 11; */
-  /* Другой вариант задания розмеров блока */
-  max-width: 320px;
-  width: 100%;
-
-  background: var(--color-white);
-  border-radius: var(--border-radius-d);
-  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
-  padding: var(--space-l);
   display: flex;
   flex-direction: column;
-  gap: var(--space-l);
+  padding: 60px 48px;
+  width: var(--width-m);
+  border-radius: var(--border-radius-s);
+
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+  align-items: flex-start;
+  flex: 1 0 0;
+  gap: 20px;
 }
 
 .form_title {
@@ -326,18 +231,25 @@
 
 .form_info {
   text-align: center;
-  font-size: var(--size-d);
+  font-size: var(--size-s);
+  font-style: normal;
   font-weight: var(--weight-text);
-  line-height: var(--space-l);
+  line-height: var(--line-m);
   color: var(--color-commit);
 }
 
 .form_button {
+  display: flex;
   text-align: center;
-  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  padding: 6px;
   background-color: var(--color-primary);
   color: var(--color-white);
+
   border-radius: var(--border-radius-s);
+  border: 1px solid var(--color-primary);
 
   transition: opacity 0.7s;
 }
@@ -353,18 +265,25 @@
 .form_input_list {
   display: flex;
   flex-direction: column;
+  width: var(--width-m);
+
   gap: var(--space-m);
 }
 
-.form_input_ {
-  padding: var(--space-xm);
+.form_input {
+  padding: 16px 12px;
   border: 1px solid #ced4ce;
   border-radius: var(--border-radius-s);
 }
 
 .form_input::placeholder {
   color: var(--color-title);
-  font-size: var(--size-d);
+  font-size: var(--size-s);
+  color: #212529;
+
+  font-style: normal;
+  font-weight: var(--weight-text);
+  line-height: var(--line-m);
 }
 
 .form_checkbox {
@@ -377,11 +296,12 @@
   display: none;
 }
 
+/* Свойства ячейки для галочки checkbox */
 .form_checkbox > input ~ div {
   border: 1px solid #767676;
-  border-radius: 4px;
-  height: 13px;
-  width: 13px;
+  border-radius: 2.5px;
+  height: 10px;
+  width: 10px;
 }
 
 .form_checkbox > input:checked ~ div {
@@ -391,6 +311,183 @@
 
 .form_checkbox > label {
   color: var(--color-title);
-  font-size: var(--size-d);
+  font-size: var(--size-s);
   cursor: pointer;
+}
+
+.updates {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-l);
+
+  border-radius: var(--border-radius-s);
+  gap: var(--space-l);
+
+  background: #fff;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
+}
+
+.updates_title {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-m);
+  font-size: var(--size-m);
+  font-style: normal;
+  font-weight: var(--weight-text);
+  color: var(--color-title);
+}
+
+.updates_content {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  align-items: flex-start;
+  gap: var(--space-s);
+  align-self: stretch;
+}
+
+.updates_icon {
+  width: 32px;
+  height: 32px;
+  color: #000;
+  font-weight: 400;
+}
+
+.updates_icon_text {
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: var(--weight-text);
+  line-height: normal;
+
+  position: absolute;
+  padding-top: 10px;
+
+  display: inline-flex;
+}
+
+.updates_content:nth-child(2) > .updates_icon {
+  background: #007bff;
+}
+
+.updates_content:nth-child(3) > .updates_icon {
+  background: #e83e8c;
+}
+
+.updates_content:nth-child(4) > .updates_icon {
+  background: #6f42c1;
+}
+
+.updates_text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--color-white);
+
+  align-self: stretch;
+  justify-content: center;
+  padding-bottom: var(--space-m);
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-m);
+}
+
+.updates_name {
+  max-width: max-content;
+  font-size: var(--size-s);
+}
+
+.updates_description {
+  font-size: var(--size-d);
+  font-weight: var(--weight-text);
+  line-height: var(--line-m);
+}
+.expirience {
+  display: flex;
+
+  padding: 24px 28px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  align-self: stretch;
+  gap: var(--space-l);
+}
+
+.expirience > div {
+  display: flex;
+  align-items: flex-end;
+  max-width: 1000px;
+  width: 100%;
+  align-self: stretch;
+}
+
+.expirience_title {
+  display: flex;
+  max-width: 535px;
+  width: 100%;
+  flex-direction: column;
+  color: var(--color-title);
+  font-weight: var(--weight-title);
+  font-size: 42px;
+  font-style: normal;
+  line-height: var(--line-d);
+}
+
+.expirience_badge_text {
+  display: inline-flex;
+  /* flex-direction: column; */
+  align-items: center;
+  padding: var(--space-m) var(--space-l);
+  gap: 12px;
+  border-radius: 70px;
+  background: #ff7347;
+  font-size: var(--size-m);
+  color: var(--color-white);
+  font-weight: var(--weight-title);
+  font-style: normal;
+  line-height: var(--line-d);
+}
+
+.expirience_badge_right {
+  align-items: flex-end;
+
+  position: absolute;
+
+  transform: rotate(30deg);
+  transform-origin: top right;
+  translate: calc(1000px - (38px * 2)) -10px;
+}
+
+.expirience_block {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-l);
+  align-self: stretch;
+}
+
+.expirience_content {
+  display: flex;
+  width: var(--width-m);
+  height: 100%;
+  flex-direction: column;
+  background: var(--color-title);
+  border-radius: var(--border-radius-d);
+  padding: var(--space-xm);
+  gap: 8px;
+  flex: 1 0 0;
+}
+
+.expirience_name {
+  color: var(--color-white);
+  font-size: var(--size-l);
+  font-style: normal;
+  font-weight: var(--weight-title);
+  line-height: 26px;
+}
+.expirience_text {
+  color: #b1b1b1;
+  font-size: var(--size-d);
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: var(--weight-text);
+  line-height: 22px;
 }
