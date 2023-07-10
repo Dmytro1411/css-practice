@@ -1,3 +1,12 @@
+/* Указываем приоритетность (слева на право) */
+@layer normalize, main, component, style;
+
+@layer style {
+  .card_button {
+    background: red;
+  }
+}
+
 @keyframes fly {
   from {
     top: 0;
@@ -271,24 +280,30 @@
   color: var(--color-text);
 }
 
-.button {
-  display: inline-block;
-  font-size: var(--size-d);
-  text-decoration: none;
-  padding: var(--space-m) var(--space-xm);
-  border-radius: var(--border-radius);
+@layer main {
+  .button {
+    display: inline-block;
+    font-size: var(--size-d);
+    text-decoration: none;
+    padding: var(--space-m) var(--space-xm);
+    border-radius: var(--border-radius);
 
-  transition-property: opacity, background-color, color;
-  transition-duration: 3s;
+    transition-property: opacity, background-color, color;
+    transition-duration: 3s;
+  }
+
+  .button:hover {
+    opacity: 0.7;
+    background-color: yellow;
+    color: red;
+  }
 }
-.card_button {
-  color: var(--color-white);
-  background: var(--color-primary);
-}
-.button:hover {
-  opacity: 0.7;
-  background-color: yellow;
-  color: red;
+
+@layer component {
+  .card_button {
+    color: var(--color-white);
+    background: var(--color-primary);
+  }
 }
 
 .form {
@@ -313,7 +328,7 @@
   color: var(--color-white);
 }
 
-.form_text {
+.form_info {
   font-size: var(--size-d);
   font-weight: var(--weight-text);
   color: var(--color-white);
@@ -494,12 +509,100 @@
 .input {
   /* Для задания цвета курсора редактирования используется
 	свойство caret-color*/
+
   caret-color: var(--color-primary);
   border: 1px solid var(--color-title);
 }
 
 /* Для того чтобы задать поведение прокрутки используют 
 свойство scroll-behavior */
+
 :root {
   scroll-behavior: smooth;
+}
+
+/* 09.07.2023 Урок 24 уровень 2 модуль 5 - "CSS правила и единицы измерения" */
+.blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* @media all and (min-width: 0px) and (max-width: 600px) {
+  .blog {
+    grid-template-columns: 1fr;
+  }
+} */
+/* Использование "not" */
+/* @media not all and (min-width: 601px) and (max-width: 800px) {
+	.blog {
+	  grid-template-columns: 1fr;
+	}
+  } */
+
+/* @media all and (not (min-width: 800px)) {
+  .page_content {
+    background: red;
+  }
+} */
+
+/* @media all and (min-width: 601px) and (max-width: 800px),
+  all and (min-width: 1000px) {
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* Использоывание операторов сравнения */
+@media all and (width < 600px) {
+  .blog {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (600px < width <= 801px) {
+  .blog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form {
+  gap: var(--space-l);
+}
+
+@media all and (width <= 560px) {
+  .form {
+    /* grid-template-columns: 1fr; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .form_info {
+    max-width: 300px;
+    width: 100%;
+    line-height: 150%;
+  }
+
+  .form_content {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.hero_container {
+  container-type: inline-size;
+  container-name: hero;
+
+  /* min-height: max-content; */
+}
+
+/* .hero {
+  display: grid;
+  grid-template-rows: auto repeat(3, 300px);
+} */
+
+@container hero (width < 960px) {
+  .hero {
+    flex-direction: column;
+  }
 }
