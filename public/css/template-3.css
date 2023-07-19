@@ -1,3 +1,16 @@
+@import '/css/var.css';
+
+@font-face {
+  font-family: 'Segment';
+  src: url(/font/Segment-Regular.otf);
+  font-weight: 400px;
+}
+@font-face {
+  font-family: 'Segment';
+  src: url(/font/Segment-SemiBold.otf);
+  font-weight: 600px;
+}
+
 /* Указываем приоритетность (слева на право) */
 @layer normalize, main, component, style;
 
@@ -31,35 +44,6 @@
     background: purple;
     /* width: 100px; */
   }
-}
-
-:root {
-  /* Данные переменные выносятся если их количество в коде более трех
-	для упрощения последующего внесения изменений в них
-	(не нужно выискивать в коде их местоположение) */
-  --space-m: 12px;
-  --space-xm: 16px;
-  --space-l: 24px;
-  --space-b: 36px;
-  --space-sm: 80px;
-
-  --size-s: 14px;
-  --size-d: 16px;
-  --size-l: 20px;
-  --size-m: 24px;
-
-  --color-border: #dee2e6;
-  --color-primary: rgb(46, 46, 255);
-  --color-white: #fff;
-  --color-title: #212529;
-  --color-text: #343a34;
-
-  --border-radius: 12px;
-  /* Жирность шрифта */
-  --weight-title: 500;
-  --weight-text: 400;
-
-  --page-width: 960px;
 }
 
 /* ================================== */
