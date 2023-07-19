@@ -65,10 +65,12 @@ pre {
   padding: 10px;
   border-bottom: 1px solid #949191;
   display: flex;
-  justify-content: right;
+  flex-direction: column;
 }
 .nav {
   display: flex;
+  justify-content: right;
+  padding: 5px;
   gap: 12px;
 }
 
